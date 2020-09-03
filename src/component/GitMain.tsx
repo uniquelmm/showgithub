@@ -13,14 +13,12 @@ const Title = styled.div`
   font-weight: bold;
 `;
 
-const A = styled.a``;
-
 export const GitMain: FC<Owner> = ({ login, avatar_url, html_url }) => {
   return (
     <>
-      <A href={html_url}>
+      <a href={html_url}>
         <Image src={avatar_url}></Image>
-      </A>
+      </a>
       <Title>{login}</Title>
     </>
   );
