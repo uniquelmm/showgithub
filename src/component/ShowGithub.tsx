@@ -1,10 +1,15 @@
+import React, { FC } from "react";
 import styled from "styled-components";
-import { FC } from "react";
-import React from "react";
-import data from "../data";
+import useSWR from "swr";
+
 import { RootObject } from "../interfaces";
-import { Message } from "./Message";
 import { GitMain } from "./GitMain";
+import { Message } from "./Message";
+
+const API =
+  "https://api.github.com/search/repositories?q=stars:%3E1&sort=stars&order=desc&type=Repositories";
+
+const fetcher = (url: RequestInfo) => fetch(url).then((r) => r.json());
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,11 +42,17 @@ const MessageWrapper = styled.div`
 `;
 
 export const ShowGithub: FC<RootObject> = ({ items }) => {
+  const { data, error } = useSWR(API, fetcher);
+  console.log(data);
+
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+
   return (
     <Wrapper>
-      {data?.items?.map((item: any, count) => {
+      {data?.items?.map((item: any, count: number) => {
         return (
-          <GitWrapper>
+          <GitWrapper key={item.id}>
             <GitId>#{count + 1}</GitId>
             <GitMainWrapper>
               <GitMain

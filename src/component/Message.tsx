@@ -1,14 +1,15 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-import { Item } from "../interfaces";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faShareAlt,
-  faUser,
   faExclamationTriangle,
+  faShareAlt,
   faStar,
+  faUser,
 } from "@fortawesome/fontawesome-free-solid";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { FC } from "react";
+import styled from "styled-components";
+
+import { Item } from "../interfaces";
 
 const SmallTitle = styled.div`
   display: flex;
@@ -77,6 +78,7 @@ export const Message: FC<Item> = ({
   open_issues_count,
 }) => {
   const index = full_name.lastIndexOf("/");
+
   return (
     <>
       <SmallTitle>

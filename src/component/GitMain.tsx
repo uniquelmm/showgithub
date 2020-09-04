@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+
 import { Owner } from "../interfaces";
 
 const Image = styled.img`
@@ -17,7 +18,7 @@ export const GitMain: FC<Owner> = ({ login, avatar_url, html_url }) => {
   return (
     <>
       <a href={html_url}>
-        <Image src={avatar_url}></Image>
+        <Image src={avatar_url} />
       </a>
       <Title>{login}</Title>
     </>
