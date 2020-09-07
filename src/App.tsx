@@ -1,9 +1,21 @@
-import React from "react";
-import { ShowGithub } from "./component/ShowGithub";
-// import data from "./data";
-// import useSWR from "swr";
-function App() {
-  return <ShowGithub />;
+import React, { ReactElement, useMemo } from "react";
+import useSWR from "swr";
+
+import { ShowGithub } from "./components/ShowGithub";
+import { transform } from "./utils/transform";
+
+const API =
+  "https://api.github.com/search/repositories?q=stars:%3E1&sort=stars&order=desc&type=Repositories";
+
+const fetcher = (url: RequestInfo) => fetch(url).then((r) => r.json());
+function App(): ReactElement {
+  const { data, error } = useSWR(API, fetcher);
+
+  const newData = useMemo(() => transform(data), [data]);
+
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+
+  return <ShowGithub data={newData} />;
 }
-// items={data.items}
 export default App;

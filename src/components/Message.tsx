@@ -9,17 +9,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FC } from "react";
 import styled from "styled-components";
 
-import { Item } from "../interfaces";
-
+import { Item } from "../interfaces/index";
 const SmallTitle = styled.div`
   display: flex;
   align-items: center;
 `;
 
 const SmallTitleIcon = styled.nav`
-  color: #ffbf74;
-  margin: 0 4px;
   width: 15px;
+  margin: 0 4px;
+
+  color: #ffbf74;
 `;
 
 const SmallTitleWord = styled.div`
@@ -32,9 +32,10 @@ const Stars = styled.div`
 `;
 
 const StarsIcon = styled.div`
-  color: #ffd700;
-  margin: 0 4px;
   width: 15px;
+  margin: 0 4px;
+
+  color: #ffd700;
 `;
 
 const StarsWord = styled.div`
@@ -47,9 +48,10 @@ const Forks = styled.div`
 `;
 
 const ForksIcon = styled.div`
-  color: #8cc6f3;
-  margin: 0 4px;
   width: 15px;
+  margin: 0 4px;
+
+  color: #8cc6f3;
 `;
 
 const ForksWord = styled.div`
@@ -62,22 +64,18 @@ const Issues = styled.div`
 `;
 
 const IssuesIcon = styled.div`
-  color: #f0949a;
-  margin: 0 4px;
   width: 15px;
+  margin: 0 4px;
+
+  color: #f0949a;
 `;
 
 const IssuesWord = styled.div`
   padding: 1px 6px;
 `;
 
-export const Message: FC<Item> = ({
-  full_name,
-  stargazers_count,
-  forks_count,
-  open_issues_count,
-}) => {
-  const index = full_name.lastIndexOf("/");
+export const Message: FC<Item> = ({ data }) => {
+  const index = data.fullName.lastIndexOf("/");
 
   return (
     <>
@@ -88,7 +86,7 @@ export const Message: FC<Item> = ({
             icon={faUser as IconProp}
           />
         </SmallTitleIcon>
-        <SmallTitleWord>{full_name.substring(0, index)}</SmallTitleWord>
+        <SmallTitleWord>{data.fullName.substring(0, index)}</SmallTitleWord>
       </SmallTitle>
       <Stars>
         <StarsIcon>
@@ -97,13 +95,13 @@ export const Message: FC<Item> = ({
             icon={faStar as IconProp}
           />
         </StarsIcon>
-        <StarsWord>{stargazers_count} stars</StarsWord>
+        <StarsWord>{data.stargazersCount} stars</StarsWord>
       </Stars>
       <Forks>
         <ForksIcon>
           <FontAwesomeIcon icon={faShareAlt as IconProp} />
         </ForksIcon>
-        <ForksWord>{forks_count} forks</ForksWord>
+        <ForksWord>{data.forksCount} forks</ForksWord>
       </Forks>
       <Issues>
         <IssuesIcon>
@@ -112,7 +110,7 @@ export const Message: FC<Item> = ({
             icon={faExclamationTriangle as IconProp}
           />
         </IssuesIcon>
-        <IssuesWord>{open_issues_count} open issues</IssuesWord>
+        <IssuesWord>{data.openIssuesCount} open issues</IssuesWord>
       </Issues>
     </>
   );
