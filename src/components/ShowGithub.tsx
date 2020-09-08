@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { GitMain } from "./GitMain";
 import { Message } from "./Message";
+require("dotenv/config");
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,17 +40,22 @@ const MessageWrapper = styled.div`
 
   font-size: 14px;
 `;
-console.log(process.env);
+
 export const ShowGithub: FC<{ data: any }> = ({ data }) => {
+  const { SERVER_URL } = process.env;
+  console.log(SERVER_URL, "!!!");
+
   return (
     <Wrapper>
       {data?.items?.map((item: any, index: number) => {
         return (
           <GitWrapper key={item.id}>
             <GitId>#{index + 1}</GitId>
+
             <GitMainWrapper>
               <GitMain data={item.owner} />
             </GitMainWrapper>
+
             <MessageWrapper>
               <Message data={item} />
             </MessageWrapper>

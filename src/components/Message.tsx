@@ -10,6 +10,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 import { Item } from "../interfaces/index";
+
 const SmallTitle = styled.div`
   display: flex;
   align-items: center;
@@ -88,6 +89,7 @@ export const Message: FC<Item> = ({ data }) => {
         </SmallTitleIcon>
         <SmallTitleWord>{data.fullName.substring(0, index)}</SmallTitleWord>
       </SmallTitle>
+
       <Stars>
         <StarsIcon>
           <FontAwesomeIcon
@@ -97,12 +99,14 @@ export const Message: FC<Item> = ({ data }) => {
         </StarsIcon>
         <StarsWord>{data.stargazersCount} stars</StarsWord>
       </Stars>
+
       <Forks>
         <ForksIcon>
           <FontAwesomeIcon icon={faShareAlt as IconProp} />
         </ForksIcon>
         <ForksWord>{data.forksCount} forks</ForksWord>
       </Forks>
+
       <Issues>
         <IssuesIcon>
           <FontAwesomeIcon
