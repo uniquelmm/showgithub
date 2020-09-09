@@ -1,8 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
-import { Owner } from "../showgithubinterfaces/index";
-
+import { Owner } from "../interfaces/showGithub";
 const Image = styled.img`
   width: 100px;
   height: 100px;

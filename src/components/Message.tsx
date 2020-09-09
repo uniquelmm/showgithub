@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FC } from "react";
 import styled from "styled-components";
 
-import { Item } from "../showgithubinterfaces/index";
+import { Item } from "../interfaces/showGithub";
 
 const MessageTitle = styled.div`
   display: flex;

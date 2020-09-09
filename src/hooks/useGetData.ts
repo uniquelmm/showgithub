@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import useSWR, { keyInterface } from "swr";
 
-import { fetcher } from "./fetcher";
-import { transform } from "./utils/transform";
+import { fetcher } from "../utils/fetcher";
+import { transform } from "../utils/transform";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useGetData(API: keyInterface): [any, boolean] {

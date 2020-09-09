@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 import { ShowGithub } from "./components/ShowGithub/ShowGithub";
-import { useGetData } from "./useGetData";
+import { useGetData } from "./hooks/useGetData";
 const Wrapper = styled.div`
   display: flex;
   display: -webkit-flex;
