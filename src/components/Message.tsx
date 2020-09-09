@@ -9,25 +9,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FC } from "react";
 import styled from "styled-components";
 
-import { Item } from "../interfaces/index";
+import { Item } from "../showgithubinterfaces/index";
 
-const SmallTitle = styled.div`
+const MessageTitle = styled.div`
   display: flex;
   align-items: center;
 `;
 
-const SmallTitleIcon = styled.nav`
+const MessageTitleIcon = styled.nav`
   width: 15px;
   margin: 0 4px;
 
   color: #ffbf74;
 `;
 
-const SmallTitleWord = styled.div`
+const MessageTitleWord = styled.div`
   padding: 1px 6px;
 `;
 
-const Stars = styled.div`
+const MessageStars = styled.div`
   display: flex;
   align-items: center;
 `;
@@ -43,7 +43,7 @@ const StarsWord = styled.div`
   padding: 1px 6px;
 `;
 
-const Forks = styled.div`
+const MessageForks = styled.div`
   display: flex;
   align-items: center;
 `;
@@ -59,7 +59,7 @@ const ForksWord = styled.div`
   padding: 1px 6px;
 `;
 
-const Issues = styled.div`
+const MessageIssues = styled.div`
   display: flex;
   align-items: center;
 `;
@@ -80,17 +80,17 @@ export const Message: FC<Item> = ({ data }) => {
 
   return (
     <>
-      <SmallTitle>
-        <SmallTitleIcon>
+      <MessageTitle>
+        <MessageTitleIcon>
           <FontAwesomeIcon
             className="list-group-item"
             icon={faUser as IconProp}
           />
-        </SmallTitleIcon>
-        <SmallTitleWord>{data.fullName.substring(0, index)}</SmallTitleWord>
-      </SmallTitle>
+        </MessageTitleIcon>
+        <MessageTitleWord>{data.fullName.substring(0, index)}</MessageTitleWord>
+      </MessageTitle>
 
-      <Stars>
+      <MessageStars>
         <StarsIcon>
           <FontAwesomeIcon
             className="list-group-item"
@@ -98,16 +98,16 @@ export const Message: FC<Item> = ({ data }) => {
           />
         </StarsIcon>
         <StarsWord>{data.stargazersCount} stars</StarsWord>
-      </Stars>
+      </MessageStars>
 
-      <Forks>
+      <MessageForks>
         <ForksIcon>
           <FontAwesomeIcon icon={faShareAlt as IconProp} />
         </ForksIcon>
         <ForksWord>{data.forksCount} forks</ForksWord>
-      </Forks>
+      </MessageForks>
 
-      <Issues>
+      <MessageIssues>
         <IssuesIcon>
           <FontAwesomeIcon
             className="list-group-item"
@@ -115,7 +115,7 @@ export const Message: FC<Item> = ({ data }) => {
           />
         </IssuesIcon>
         <IssuesWord>{data.openIssuesCount} open issues</IssuesWord>
-      </Issues>
+      </MessageIssues>
     </>
   );
 };

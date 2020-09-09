@@ -1,6 +1,9 @@
 export interface RootObject {
   // eslint-disable-next-line no-use-before-define
-  items?: Item[]; // 所有变种
+  data: {
+    // eslint-disable-next-line no-use-before-define
+    items: Item[]; // 所有变种
+  };
 }
 
 export interface Item {
