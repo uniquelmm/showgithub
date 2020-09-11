@@ -1,1 +1,1 @@
-export * from "../ShowGithub";
+export * from ".";

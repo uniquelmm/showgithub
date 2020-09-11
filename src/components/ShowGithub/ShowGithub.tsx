@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 import { GitMain } from "../GitMain";
 import { Message } from "../Message";
-require("dotenv/config");
 
 const GitWrapper = styled.div`
   display: inline-block;
@@ -32,7 +31,7 @@ const MessageWrapper = styled.div`
   font-size: 14px;
 `;
 
-export const ShowGithub: FC<{ data: any; item: any; index: number }> = ({
+export const ShowGithub: FC<{ item: any; index: number }> = ({
   index,
   item,
 }) => {

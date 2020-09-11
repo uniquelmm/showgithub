@@ -5,7 +5,6 @@ import { ShowGithub } from "./components/ShowGithub/ShowGithub";
 import { useGetData } from "./hooks/useGetData";
 const Wrapper = styled.div`
   display: flex;
-  display: -webkit-flex;
   flex-wrap: wrap;
   justify-content: space-around;
 
@@ -13,7 +12,7 @@ const Wrapper = styled.div`
 `;
 function App(): ReactElement {
   const API =
-    "search/repositories?q=stars:%3E1&sort=stars&order=desc&type=Repositories";
+    "search/repositories?q=stars:>1+language:javascript&sort=stars&order=desc&type=Repositories";
   const [data, error] = useGetData(API);
 
   if (error) return <div>failed to load</div>;
@@ -22,9 +21,7 @@ function App(): ReactElement {
   return (
     <Wrapper>
       {data?.items?.map((item: any, index: number) => {
-        return (
-          <ShowGithub data={data} key={item.id} item={item} index={index} />
-        );
+        return <ShowGithub key={item.id} item={item} index={index} />;
       })}
     </Wrapper>
   );
